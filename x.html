@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    canvas {
+      border: solid 1px gray;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+  <script>
+    const canvas = document.getElementById('gameCanvas')
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'gray'
+
+    var x = 10;
+    var y = 10;
+    var x2 = 10
+    var y2 = 380
+    var x3 = 10
+
+    const plus = x => {
+      console.log('plus fn');
+      return x++
+    }
+    const minus = x => {
+      console.log('minus fn');
+      return x--
+    }
+
+    const drow = () => {
+      setInterval(() => {
+        x2++
+        y2--
+        if (x2 < 380 && y2 !== 10) {
+          ctx.fillRect(plus(x2), minus(y2), 10, 10)
+        } else {
+          if (x3 < 380) {
+            ctx.fillRect(195, plus(x3++), 10, 10)
+          }
+        }
+      }, 1);
+    }
+
+    new Promise((res, rej) => {
+      setInterval(() => {
+        x++
+        y++
+        if (x < 380 && y < 380) {
+          ctx.fillRect(plus(x), plus(y), 10, 10)
+        } else res()
+      }, 1)
+    }).then(() => {
+      drow()
+    })
+
+    // document.addEventListener('keydown', handleKey)
+  </script>
+</body>
+
+</html>

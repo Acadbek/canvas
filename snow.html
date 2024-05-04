@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    canvas {
+      background-color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas width="400" height="400" id="canvas"></canvas>
+
+  <script>
+    const canvasElement = document.getElementById('canvas')
+    const canvas = canvasElement.getContext('2d')
+
+    canvas.fillStyle = 'white'
+    let y = 0
+
+    const plus = x => {
+      return setInterval(() => {
+        return y++
+      }, 1);
+    }
+
+    const random = () => {
+      return Math.floor(Math.random() * 1000)
+    }
+
+    for (let i = 0; i < 1000; i++) {
+      canvas.beginPath();
+      canvas.arc(random(), random(), 2, 0, 2 * Math.PI);
+      canvas.fill();
+    }
+
+    console.log(canvas);
+
+    setInterval(() => {
+    }, 10)
+
+  </script>
+</body>
+
+</html>
